@@ -1,4 +1,5 @@
 ﻿class Program
+
 {
     static void Main()
     {
@@ -7,12 +8,7 @@
         {
             int option;
 
-            Console.WriteLine();
-            Console.WriteLine("Menu:");
-            Console.WriteLine("1. Create Account");
-            Console.WriteLine("2. Deposit");
-            Console.WriteLine();
-            Console.Write("Please make a selection: ");
+            MenuMethod();
 
             var input = int.TryParse(Console.ReadLine(), out option);
 
@@ -29,9 +25,20 @@
             }
         }
     }
+
+    private static void MenuMethod()
+    {
+            Console.WriteLine();
+            Console.WriteLine("Menu:");
+            Console.WriteLine("1. Skapa Konto");
+            Console.WriteLine("2. Deposit");
+            Console.WriteLine();
+            Console.Write("Var snäll ock gör ett val: ");
+    }
 }
 
 internal class Atm
+
 {
     public List<Account> Accounts { get; set; }
 
@@ -44,15 +51,15 @@ internal class Atm
     {
         var account = new Account();
 
-        Console.WriteLine("Create a new account!");
+        Console.WriteLine("Skapar ett nytt konto!!!");
         Console.WriteLine();
-        Console.Write("Enter first name: ");
+        Console.Write("Skriv ditt förstanamn: ");
         account.FirstName = Console.ReadLine();
-        Console.Write("Enter last name: ");
+        Console.Write("Skriv ditt efternamn: ");
         account.LastName = Console.ReadLine();
-        Console.Write("Enter date of birth: ");
+        Console.Write("Skriv Födelsedatum: ");
         account.DateOfBirth = DateTime.Parse(Console.ReadLine());
-        Console.Write("Enter phone number: ");
+        Console.Write("Skriv ditt telefonummer: ");
         account.PhoneNumber = Console.ReadLine();
 
         account.Balance = 0.0;
@@ -65,21 +72,21 @@ internal class Atm
     {
         int accountId;
 
-        Console.Write("Enter your account number: ");
+        Console.Write("Skriv kontonummer: ");
         int.TryParse(Console.ReadLine(), out accountId);
 
         var account = Accounts.FirstOrDefault(a => a.Id == accountId);
         if (account != null)
         {
             double amount;
-            Console.Write("Enter amount to deposit: ");
+            Console.Write("Skriv mängd du vill insätta: ");
             double.TryParse(Console.ReadLine(), out amount);
             account.Balance += amount;
-            Console.Write("Your new balance is {0}", account.Balance);
+            Console.Write("Ditt kontos balance är: {0}", account.Balance);
         }
         else
         {
-            Console.WriteLine("That account does not exist!");
+            Console.WriteLine("Detta konto fungerar inte eller är avstängt!");
         }
     }
 }
