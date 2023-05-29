@@ -1,4 +1,4 @@
-public class Account : Accountclass
+public class Accountclass
 {
     public int Id { get; set; }
 
