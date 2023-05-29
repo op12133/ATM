@@ -98,7 +98,7 @@ class program
     public Atm()
     {
         Accounts = new List<Account>();
-        Adminaccount = new List<Adminaccount>();
+        Adminaccounts = new List<Adminaccount>();
     }
 
     public void CreateAccount()
